@@ -43,7 +43,7 @@ setUsers(data);
         
         
         }
-let name,value;
+          let name,value;
                const handleSearch=(e)=>{
              console.log(e);
              name=e.target.name;
@@ -54,8 +54,8 @@ let name,value;
                const postSearch=async(e)=>{
                 e.preventDefault();
                 const { state, city,bloodgrp}=search;
-                const res=await fetch("/searchpage2",{
-                method:"GET",
+                const res=await fetch("/searchpage",{
+                method:"POST",
                 headers:{
               "Content-Type":"application/json"
               
@@ -66,6 +66,7 @@ let name,value;
               
                 });
                 const data=await res.json();
+                setSearch(data);
                 if(res.status===422|| !data){
                  
                   console.log("search failed");
@@ -73,7 +74,7 @@ let name,value;
                 else{
                   
                   console.log("search successfull");
-                
+                    
                 }
             }
         useEffect(()=>{
@@ -107,7 +108,7 @@ let name,value;
 
                         </h1>
 
-                    </div><form method="GET" id="search-form">
+                    </div><form method="POST" id="search-form">
                     <div className="cardDiv grid">
                     
                         <div className="dinp">

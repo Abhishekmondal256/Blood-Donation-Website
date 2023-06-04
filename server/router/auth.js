@@ -101,6 +101,19 @@ res.send(allUser);
   
   
   })
+router.post("/searchpage",async(req,res)=>{
+  try {
+   
+    const { state,city,bloodgrp } = req.body;
+    const searchedData=await User.find({state:state , city:city, bloodgrp:bloodgrp});
+    console.log("data found");
+    res.json({searchedData});
 
+  }catch(err){
+    console.log(err);
+  }
+
+
+})
 
 module.exports = router;
