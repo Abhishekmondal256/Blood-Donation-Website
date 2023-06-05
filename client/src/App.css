@@ -40,7 +40,7 @@
 width: 100vw;
 margin:auto;
 
-margin-top:30px;
+margin-top:20px;
 }
 .container{
   display: flex;
@@ -52,16 +52,23 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(5px);
 -webkit-backdrop-filter: blur(5px);
 border: 1px solid rgba(255, 255, 255, 0.2);
-  height:490px;
- 
+  height:540px;
+ width:1200px;
   /* padding:7px; */
-  gap: 10px;
+  gap: 5px;
+}
+.containery{
+  
+  height:475px;
+ width:1200px;
+  /* padding:7px; */
+  gap: 5px;
 }
 .signup-content{
   display: flex;
   flex-direction: column;
   align-items: center;
-margin-left: -25px;
+margin-left: -35px;
   
   }
   .form-group{
@@ -79,7 +86,9 @@ margin:2px;
     background-color: blue;
     margin-left:5px !important;
     margin-right:5px !important;
+    border-radius: 10px;
   }
+ 
   input[type="submit"] 
   {
      border:2px solid black !important; 
@@ -90,29 +99,67 @@ margin:2px;
   }
   .ftitle{
     text-align: center;
+    margin-top:-30px;
+    margin-bottom:10px;
   }
-  
+  .ftitley{
+    text-align: center;
+    margin-top:-30px;
+    margin-bottom:10px;
+  }
   
   .signup-image{
     display:flex;
     flex-direction: column;
     align-items: center;
     width:60vw;
-    height:74vh;
+    height:82vh;
+    padding:0;
+  }
+  .signup-imagey{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:60vw;
+    height:72vh;
     padding:0;
   }
   .im{
-    width:940px;
+    width:840px;
     height:700px !important;
+  }
+  .imy{
+    width:918px;
+    height:600px !important;
   }
   #register-form{
     display: flex;
     flex-direction: column;
   }
+ 
+  .form-group{
+    margin-left:-10px;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+  }
+  .form-groupy{
+    display:flex;
+    column-gap: 40px;
+  }
+  .form-groupe{
+   margin:5px;
+
+  }
+  .signup-link{
+    margin-top: 10px;
+  }
+  #lab2{
+    display: flex;
+  }
   #signin{
     background-color: blue;
-    margin-left:15px !important;
-    margin-right:8px !important;
+    border-radius: 10px;
+    margin-left: 15px !important;
   }
   .eprof{
    display:flex;

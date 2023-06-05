@@ -61,90 +61,92 @@ return (
     <div className="signup-content">
     <h2 className="ftitle">Sign up</h2>
     <form method="POST" className="register-form" id="register-form">
-     <div className="form-group">
-       <label htmlFor="name">
+     <div className="form-group"><div id="lab">Name</div>
+      <div id="lab2"> <label htmlFor="name">
        <i class="zmdi zmdi-account "></i>
-       </label>
+        </label>
        <input type="text" name="name" id="name" autoComplete="off" value={user.name} onChange={handleInputs} placeholder="enter your name"/>
     
-     </div>
+       </div> </div>
      
-     <div className="form-group">
-       <label htmlFor="email">
+     <div className="form-group"><div id="lab">Email</div>
+      <div id="lab2"> <label htmlFor="email">
        <i class="zmdi zmdi-email "></i>
-       </label>
+        </label>
        <input type="email" name="email" id="email" autoComplete="off" value={user.email} onChange={handleInputs}  placeholder="enter your email"/>
     
-     </div>
-     <div className="form-group">
-       <label htmlFor="phone">
+      </div>  </div>
+     <div className="form-group"><div id="lab">Phone</div>
+      <div id="lab2"> <label htmlFor="phone">
        <i class="zmdi zmdi-phone-in-talk "></i>
-       </label>
+        </label>
        <input type="number" name="phone" id="phone" autoComplete="off" value={user.phone} onChange={handleInputs}  placeholder="enter your phone number"/>
     
-     </div>
-     <div className="form-group">
-       <label htmlFor="bloodgrp">
-       <i class="zmdi zmdi-lamp"></i>
+      </div>  </div>
+     <div className="form-group"><div id="lab">BloodGroup</div>
+      <div id="lab2"> <label htmlFor="bloodgrp">
+       <i class="zmdi zmdi-lamp"></i> 
        </label>
        <input type="text" name="bloodgrp" id="bloodgrp" autoComplete="off" value={user.bloodgrp} onChange={handleInputs}  placeholder="enter your bloodgroup"/>
-    
+       </div>
      </div>
-     <div className="form-group">
-       <label htmlFor="gender">
+     <div className="form-group"><div id="lab">Gender</div>
+      <div id="lab2"> <label htmlFor="gender">
        <i class="zmdi zmdi-male-female"></i>
-       </label>
+        </label>
        <input type="text" name="gender" id="gender" autoComplete="off" value={user.gender} onChange={handleInputs}  placeholder="enter your gender"/>
     
-    
+     </div>  
     
      </div>
-     <div className="form-group">
-       <label htmlFor="age">
+     <div className="form-group"><div id="lab">Age</div>
+      <div id="lab2"> <label htmlFor="age">
        <i class="zmdi zmdi-edit"></i>
-       </label>
+        </label>
        <input type="number" name="age" id="age" min="1" autoComplete="off" value={user.age} onChange={handleInputs} placeholder="enter your age"/>
     
-     </div>
-     <div className="form-group">
-       <label htmlFor="ldate">
+        </div></div>
+     
+     <div className="form-group"><div id="lab">Last Donated</div>
+      <div id="lab2"> <label htmlFor="ldate">
        <i class="zmdi zmdi-calendar"></i>
-       </label>
+        </label>
        <input type="date" name="ldate" id="ldate" autoComplete="off" value={user.ldate} onChange={handleInputs}  placeholder="last donated (dd/mm/yy)" />
     
-     </div>
-     <div className="form-group">
-       <label htmlFor="state">
+      </div>  </div>
+     <div className="form-group"><div id="lab">State</div>
+      <div id="lab2"> <label htmlFor="state">
        <i class="zmdi zmdi-lock"></i>
-       </label>
+        </label>
        <input type="text" name="state" id="state" autoComplete="off" value={user.state} onChange={handleInputs} placeholder="enter your state"/>
     
-     </div>
-     <div className="form-group">
-       <label htmlFor="city">
+      </div>  </div>
+     <div className="form-group"><div id="lab">City</div>
+      <div id="lab2"> <label htmlFor="city">
        <i class="zmdi zmdi-gps-dot"></i>
-       </label>
+        </label>
        <input type="text" name="city" id="city" autoComplete="off" value={user.city} onChange={handleInputs}  placeholder="confirm your city"/>
     
-     </div>
-     <div className="form-group">
-       <label htmlFor="password">
-       <i class="zmdi zmdi-gps-dot"></i>
+       </div> </div>
+     <div className="form-group"><div id="lab">Password</div>
+      <div id="lab2"> <label htmlFor="password">
+       <i class="zmdi zmdi-gps-dot"></i> 
        </label>
        <input type="password" name="password" id="password" autoComplete="off" value={user.password} onChange={handleInputs}  placeholder="enter your password"/>
-    
+       </div>
      </div>
-     <div className="form-group">
-       <label htmlFor="cpassword">
-       <i class="zmdi zmdi-lock"></i>
+     <div className="form-group"><div id="lab">Confirm Password</div>
+      <div id="lab2"> <label htmlFor="cpassword">
+       <i class="zmdi zmdi-lock"></i> 
        </label>
        <input type="password" name="cpassword" id="cpassword" autoComplete="off" value={user.cpassword} onChange={handleInputs}  placeholder="confirm your password"/>
-    
+       </div>
      </div>
     
-     <div className="form-group">
+     <div className="form-groupy ">
+     <NavLink to="/login" className="signup-link">already registered</NavLink>
         <input type="submit" name="signup" id="signup" className="form-submit" value="Register" onClick={PostData} />
-        <NavLink to="/login" className="signup-link">already registered</NavLink>
+        
      </div>
     
     </form>

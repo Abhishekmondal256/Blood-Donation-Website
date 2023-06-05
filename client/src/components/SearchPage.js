@@ -7,13 +7,16 @@ import { useNavigate } from "react-router-dom";
 
 
 const SearchPage = () => {
+    const [ispos,setPos]=useState(false);
     const navigate=useNavigate();
     const [users,setUsers]=useState([]);
     const [search,setSearch]=useState({
     state:"",city:"",bloodgrp:""
 
    });
+   const [lis,setLis]=useState([]);
     const getUsers=async()=>{
+        
         try{
            
                 const res=await fetch("/searchpage",{
@@ -43,6 +46,7 @@ setUsers(data);
         
         
         }
+        
           let name,value;
                const handleSearch=(e)=>{
              console.log(e);
@@ -66,7 +70,9 @@ setUsers(data);
               
                 });
                 const data=await res.json();
-                setSearch(data);
+                console.log(data);
+                
+               
                 if(res.status===422|| !data){
                  
                   console.log("search failed");
@@ -74,7 +80,9 @@ setUsers(data);
                 else{
                   
                   console.log("search successfull");
-                    
+                  setLis(data);
+                  setPos(true);
+                  
                 }
             }
         useEffect(()=>{
@@ -141,8 +149,8 @@ setUsers(data);
                     </form>
                 </div>
             </section>
-
-            <section className="mainy  section">
+{
+          (ispos===false)?   <section className="mainy  section">
             <form method="GET">
                 <div className="secTitle">
                     <h3 className="title">
@@ -152,7 +160,7 @@ setUsers(data);
                 </div>
                 <div className="secContent grid">
                    {
-                      users.map((curElem,id)=>{
+                     users.map((curElem,id)=>{
                          return(
                             <div key={id}
                    className="singleDestination">
@@ -210,18 +218,105 @@ setUsers(data);
                                                  
                    </div>
                    
-                   </div>   
-
-                         )
+                   </div>  
+                   )
                          
 
 
 
-                      })
+                        })
+  
+  
+  
+                     }
+                     
+                </div>
+                </form>
+            </section> : <section className="mainy  section">
+            
+                <div className="secTitle">
+                    <h3 className="title">
+                        Most Active Donors
+                    </h3>
+
+                </div>
+                <div className="secContent grid">
+                   {
+                     lis.map((curElem,id)=>{
+                         return(
+                            <div key={id}
+                   className="singleDestination">
+                    <div className="imageDiv">
+                    <img src={imge} alt="h" />
+                         </div>
+                      <div className="cardInfo">
+                         
+                            <div class="single">
+                            <div className="don"> <label>Name :</label></div>
+                                <div className="abt">
+                                <p>{curElem.name}</p></div>
+                            </div>
+                            <div class="single">
+                            <div className="don"> <label>Email:</label></div>
+                                <div className="abt">
+                                <p>{curElem.email}</p></div>
+                            </div>
+                            <div class="single">
+                            <div className="don"> <label>Phone:</label></div>
+                                <div className="abt">
+                                <p>{curElem.phone}</p></div>
+                            </div>
+                            <div class="single">
+                            <div className="don"> <label>BloodGroup:</label></div>
+                                <div className="abt">
+                                <p>{curElem.bloodgrp}</p></div>
+                            </div>
+                            <div class="single">
+                            <div className="don"> <label>Gender:</label></div>
+                                <div className="abt">
+                                <p>{curElem.gender}</p></div>
+                            </div>
+                            <div class="single">
+                            <div className="don"> <label>Age:</label></div>
+                                <div className="abt">
+                                <p>{curElem.age}</p></div>
+                            </div>
+                            <div class="single">
+                            <div className="don">  <label>Last Donated:</label></div>
+                                <div className="abt">
+                                <p>{curElem.ldate}</p></div>
+                            </div>
+                            <div class="single">
+                            <div className="don"> <label>City:</label></div>
+                                <div className="abt">
+                                <p>{curElem.city}</p></div>
+                            </div>
+                            <div class="single">
+                            <div className="don">  <label>State:</label></div>
+                                <div className="abt">
+                                <p>{curElem.state}</p></div>
+                            </div>
+                                
+                                                 
+                   </div>
+                   
+                   </div>  
+                   )
+                         
 
 
 
-                   }
+                        })
+  
+  
+  
+                     }
+                     
+                </div>
+                </section>
+               
+        }
+                        
                   
                    
                    
@@ -234,9 +329,6 @@ setUsers(data);
                 
 
 
-                </div>
-                </form>
-            </section>
         </>
 
 

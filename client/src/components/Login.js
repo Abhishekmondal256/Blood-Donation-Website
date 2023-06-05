@@ -35,20 +35,20 @@ return (
 <>
 <section className="signup">
 
-<div className="container">
-<div className="signup-image" >
-   <div className="im" style={{ backgroundImage: `url(/signuppage.webp)`, 
+<div className="container containery">
+<div className="signup-imagey" >
+   <div className="imy" style={{ backgroundImage: `url(/signuppage.webp)`, 
     backgroundRepeat: 'no-repeat' ,opacity:'0.7'}} />
     
 
 
 </div>
 <div className="signin-content">
-<h2 className="ftitle">Log In</h2>
+<h2 className="ftitley">Log In</h2>
 <form method="POST" className="register-form" id="register-form">
 
  
- <div className="form-group">
+ <div className="form-groupe">
    <label htmlFor="email">
    <i class="zmdi zmdi-email "></i>
    </label>
@@ -57,7 +57,7 @@ return (
  </div>
  
  
- <div className="form-group">
+ <div className="form-groupe">
    <label htmlFor="password">
    <i class="zmdi zmdi-gps-dot"></i>
    </label>
@@ -66,9 +66,10 @@ return (
  </div>
  
 
- <div className="form-group">
+ <div className="form-groupe">
+ <NavLink to="/signup" className="signup-link">Create Account</NavLink>
     <input type="submit" name="signin" id="signin" className="form-submit" value="Log In" onClick={loginUser}/>
-    <NavLink to="/signup" className="signup-link">Create Account</NavLink>
+    
  </div>
 
 </form>
