@@ -14,7 +14,9 @@ const SearchPage = () => {
     state:"",city:"",bloodgrp:""
 
    });
+   
    const [lis,setLis]=useState([]);
+   
     const getUsers=async()=>{
         
         try{
@@ -32,11 +34,15 @@ const SearchPage = () => {
                 const data=await res.json();
 console.log(data);
 setUsers(data);
-                
+
+console.log(data.profpic);
+                     
+                    }
+            
         
-                
+   
         
-            }
+            
                 catch(err){
                     console.log(err);
                     navigate("/",{replace:true});
@@ -82,6 +88,7 @@ setUsers(data);
                   console.log("search successfull");
                   setLis(data);
                   setPos(true);
+                  
                   
                 }
             }
@@ -165,7 +172,7 @@ setUsers(data);
                             <div key={id}
                    className="singleDestination">
                     <div className="imageDiv">
-                    <img src={imge} alt="h" />
+                    <img src={"http://localhost:5000/public/images/"+ curElem.profpic} alt="h" />
                          </div>
                       <div className="cardInfo">
                          
@@ -247,7 +254,7 @@ setUsers(data);
                             <div key={id}
                    className="singleDestination">
                     <div className="imageDiv">
-                    <img src={imge} alt="h" />
+                    <img src={"http://localhost:5000/public/images/"+ curElem.profpic} alt="h" />
                          </div>
                       <div className="cardInfo">
                          

@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
+const multer=require("multer");
 
 const cookieParser=require("cookie-parser");
 router.use(cookieParser());
@@ -15,18 +16,35 @@ router.get('/', (req, res) => {
   res.send("hello world");
 
 })
-router.post("/register", async (req, res) => {
+const storage=multer.diskStorage({destination:function(req,file,cb){
+cb(null,"public/images");
+
+},
+filename:function(req,file,cb){
+cb(null,Date.now()+'_'+ file.originalname);
+
+}
+})
+
+var upload=multer({storage:storage});
+router.post("/register",upload.single("profpic"), async (req, res) => {
+  console.log(req.file);
+let profpic=req.file.filename;
+
   const { name, email, phone, bloodgrp, gender, age,ldate, state, city, password, cpassword } = req.body;
-  if (!name || !email || !phone || !bloodgrp || !gender || !ldate || !age || !state || !city || !password || !cpassword) {
+  
+  if (!name || !email || !phone || !bloodgrp || !gender || !ldate || !age  ||!state || !city || !password || !cpassword) {
+   
     return res.status(422).json({ error: "plz fill all the deatils" });
   }
+  
   try {
     const userExist = await User.findOne({ email: email })
     if (userExist) {
       return res.status(422).json({ error: "Email already registered" });
     }
 
-    const user = new User({ name, email, phone, bloodgrp, gender, age,ldate, state, city, password, cpassword });
+    const user = new User({ name, email, phone, bloodgrp, gender, age,profpic,ldate, state, city, password, cpassword });
     await user.save();
 
 

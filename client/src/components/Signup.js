@@ -4,7 +4,7 @@ import "../App.css";
 const Signup=()=>{
 const navigate=useNavigate();
   const [user,setUser]=useState({
-    name:"", email:"", phone:"", bloodgrp:"", gender:"", age:"",ldate:"", state:"", city:"", password:"", cpassword:""
+    name:"", email:"", phone:"", bloodgrp:"", gender:"", age:"",profpic:"", ldate:"", state:"", city:"", password:"", cpassword:""
 
   });
   let name,value;
@@ -14,31 +14,65 @@ name=e.target.name;
 value=e.target.value;
 setUser({...user,[name]:value});
   }
+const handleImage=(e)=>{
+  console.log(e.target.files[0]);
 
+
+setUser({...user,profpic:e.target.files[0]});
+
+}
   const PostData=async(e)=>{
   e.preventDefault();
-  const {name, email, phone, bloodgrp, gender, age,ldate, state, city, password, cpassword}=user;
-  const res=await fetch("/register",{
-  method:"POST",
-  headers:{
-"Content-Type":"application/json"
+//   const {name, email, phone, bloodgrp, gender, age,ldate, state, city, password, cpassword}=user;
+//   const res=await fetch("/register",{
+//   method:"POST",
+//   headers:{
+// "Content-Type":"application/json"
 
-  },
-  body:JSON.stringify({
-    name, email, phone, bloodgrp, gender, age,ldate, state, city, password, cpassword
-  })
+//   },
+//   body:JSON.stringify({
+//     name, email, phone, bloodgrp, gender, age,ldate, state, city, password, cpassword
+//   })
 
-  });
-  const data=await res.json();
-  if(res.status===422|| !data){
-    window.alert("registration failed");
-    console.log("invalid registration");
-  }
-  else{
+//   });
+
+   const formData=new FormData();
+   formData.append("name",user.name);
+   formData.append("email",user.email);
+   formData.append("phone",user.phone);
+   formData.append("bloodgrp",user.bloodgrp);
+   formData.append("gender",user.gender);
+   formData.append("age",user.age);
+   formData.append("profpic",user.profpic,user.profpic.name);
+   formData.append("ldate",user.ldate);
+   formData.append("state",user.state);
+   formData.append("city",user.city);
+   formData.append("password",user.password);
+   formData.append("cpassword",user.cpassword);
+   const res=await fetch("/register",{
+method:"POST",
+body:formData
+
+   }).then((res)=>res.json()).then((data)=>{
     window.alert("registration successfull");
-    console.log("registration successfull");
-   navigate("/login",{replace:true});
-  }
+    console.log(data);
+    navigate("/login",{replace:true});}).
+    catch((err)=>{
+      window.alert("registration failed");
+      console.log(err);
+   });
+
+  // const data=await res.json();
+  // console.log(data);
+  // if(res.status===422|| !data){
+  //   window.alert("registration failed");
+  //   console.log("invalid registration");
+  // }
+  // else{
+  //   window.alert("registration successfull");
+  //   console.log("registration successfull");
+  //  navigate("/login",{replace:true});
+  // }
 
 
 
@@ -106,7 +140,13 @@ return (
        <input type="number" name="age" id="age" min="1" autoComplete="off" value={user.age} onChange={handleInputs} placeholder="enter your age"/>
     
         </div></div>
-     
+        <div className="form-group"><div id="lab">Profile Pic</div>
+      <div id="lab2"> <label htmlFor="profpic">
+       <i class="zmdi zmdi-image"></i>
+        </label>
+       <input type="file" name="profpic" id="profpic"  autoComplete="off"  onChange={handleImage} placeholder="profile pic"/>
+    
+        </div></div>
      <div className="form-group"><div id="lab">Last Donated</div>
       <div id="lab2"> <label htmlFor="ldate">
        <i class="zmdi zmdi-calendar"></i>

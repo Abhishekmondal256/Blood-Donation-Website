@@ -45,7 +45,7 @@ callAboutPage();
 <form method="GET">
 <div className="row" id="row">
 <div className="col">
-<img src={abhipic} alt="abhi" width="150px"/> 
+<img src={"http://localhost:5000/public/images/"+userData.profpic} alt="abhi" width="150px"/> 
 
 
 </div>

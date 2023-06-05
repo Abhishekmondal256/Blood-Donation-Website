@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(require("./router/auth"));
 const PORT=process.env.PORT;
 
-
+app.use('/public',express.static('public'));
 
 // app.get('/about',(req,res)=>{
 //     res.send("hello world about");

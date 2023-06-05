@@ -29,6 +29,10 @@ age:{
     required:true
  
 },
+profpic:{
+type:String,required:true
+
+},
 
 ldate:{
     type:String,
