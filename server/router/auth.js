@@ -105,12 +105,13 @@ router.post("/searchpage",async(req,res)=>{
   try {
    
     const { state,city,bloodgrp } = req.body;
-    const searchedData=await User.find({state:state , city:city, bloodgrp:bloodgrp});
-    console.log("data found");
-    res.json({searchedData});
+    const users=await User.find({state:state,city:city,bloodgrp:bloodgrp});
+   
+    res.json(users);
 
   }catch(err){
-    console.log(err);
+   console.log(err);
+   res.status(500).json({message:"internal server"});
   }
 
 
