@@ -95,7 +95,7 @@ return (
     <div className="signup-content">
     <h2 className="ftitle">Sign up</h2>
     <form method="POST" className="register-form" id="register-form">
-     <div className="form-group"><div id="lab">Name</div>
+     <div className="form-group "><div id="lab">Name</div>
       <div id="lab2"> <label htmlFor="name">
        <i class="zmdi zmdi-account "></i>
         </label>

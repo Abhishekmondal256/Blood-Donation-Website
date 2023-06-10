@@ -134,5 +134,50 @@ router.post("/searchpage",async(req,res)=>{
 
 
 })
+router.put("/update", upload.single('profpic'),async(req,res)=>{
+  console.log(req.body);
+  console.log("backend successfull");
+console.log(req.params);
+  const recordId = req.body._id;
+  const newData = req.body;
+  
+  // If an image was uploaded, update the image field in the newData object
+  if (req.file) {
+    var path = require('path');
+    newData.profpic = path.basename(req.file.path); // Assuming the file path is stored as the image field
+  }
+
+  
+  if (!newData.name || !newData.email || !newData.phone || !newData.bloodgrp || !newData.gender || !newData.ldate || !newData.age  ||!newData.state || !newData.city || !newData.password || !newData.cpassword) {
+   
+    return res.status(422).json({ error: "plz fill all the deatils" });
+  }
+  try{
+    User.findByIdAndUpdate(recordId, { $set: newData }, { new: true })
+    .then((updatedRecord) => {
+      if (updatedRecord) {
+        res.json(updatedRecord);
+      } else {
+        res.status(404).json({ error: 'Record not found' });
+      }
+    })
+    .catch((error) => {
+      res.status(500).json({ error: 'Internal server error' });
+    });
+
+  }
+
+
+catch(err){
+  console.log(err);
+  res.status(500).json({message:"internal server error occurred"});
+}
+
+
+
+})
+
+
+
 
 module.exports = router;

@@ -1,9 +1,15 @@
 import React, { useEffect ,useState}  from "react";
-import abhipic from "../images/registration.jpeg";
-import { useNavigate } from "react-router-dom";
+// import abhipic from "../images/registration.jpeg";
+import { NavLink,useNavigate } from "react-router-dom";
+import MyModal  from "./ShowModal";
 const About = ()=>{
    const navigate=useNavigate();
    const [userData,setUserData]=useState({});
+   const [showModal,setShowModal]=useState(false);
+
+   const closeModal=()=>{setShowModal(false);
+   
+   }
 const callAboutPage=async()=>{
 try{
 const res=await fetch("/about",{
@@ -35,7 +41,7 @@ navigate("/login",{replace:true});
 
    useEffect(()=>{
 callAboutPage();
-   })
+   },[])
 
 
 
@@ -60,7 +66,8 @@ callAboutPage();
 
 </div>
 <div className="col3">
-<input type="submit" className="peditbtn"  name="btnAddMore" value="Edit Profile" />
+<button onClick={(e)=>{e.preventDefault();setShowModal(true)}} id="peditbtn" className="peditbtn" >Edit Info</button>
+{showModal && <MyModal  closeModal={closeModal} pup={userData._id}/>}
 
 </div>
 
