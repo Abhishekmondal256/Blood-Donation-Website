@@ -176,7 +176,12 @@ catch(err){
 
 
 })
-
+router.get("/logout",(req,res)=>{
+  console.log("hello my slogout");
+  res.clearCookie("jwtoken",{path:"/"});
+  res.status(200).send("User Logout");
+  
+  })
 
 
 
