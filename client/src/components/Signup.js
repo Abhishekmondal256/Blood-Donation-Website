@@ -37,16 +37,16 @@ setUser({...user,profpic:e.target.files[0]});
 //   });
 
    const formData=new FormData();
-   formData.append("name",user.name);
+   formData.append("name",user.name.toLowerCase());
    formData.append("email",user.email);
    formData.append("phone",user.phone);
-   formData.append("bloodgrp",user.bloodgrp);
-   formData.append("gender",user.gender);
+   formData.append("bloodgrp",user.bloodgrp.toUpperCase());
+   formData.append("gender",user.gender.toLowerCase());
    formData.append("age",user.age);
    formData.append("profpic",user.profpic,user.profpic.name);
    formData.append("ldate",user.ldate);
-   formData.append("state",user.state);
-   formData.append("city",user.city);
+   formData.append("state",user.state.toLowerCase());
+   formData.append("city",user.city.toLowerCase());
    formData.append("password",user.password);
    formData.append("cpassword",user.cpassword);
    const res=await fetch("/register",{

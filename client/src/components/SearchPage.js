@@ -1,7 +1,7 @@
 import React ,{useEffect,useState} from "react";
 import "../App.css";
-import homeimg from "../images/bloodhome.jpg";
-import imge from "../images/registration.jpeg";
+import homeimg from "../images/bbankimg.avif";
+
 import { useNavigate } from "react-router-dom";
 
 
@@ -161,7 +161,7 @@ console.log(data.profpic);
             <form method="GET">
                 <div className="secTitle">
                     <h3 className="title">
-                        Most Active Donors
+                        Active Donors
                     </h3>
 
                 </div>
@@ -243,7 +243,7 @@ console.log(data.profpic);
             
                 <div className="secTitle">
                     <h3 className="title">
-                        Most Active Donors
+                         Active Donors
                     </h3>
 
                 </div>

@@ -1,8 +1,62 @@
-import React from "react";
+import React ,{useContext}from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { NavLink } from "react-router-dom";
 import logo from "../images/bloodlogo.png";
+import {UserContext} from "../App";
 const Navbar=()=>{
+  const {state,dispatch}= useContext(UserContext);
+const RenderMenu=()=>{
+if(state){
+return(
+<>
+<li className="nav-item active">
+        <NavLink className="nav-link" to="/">Home </NavLink>
+      </li>
+      <li className="nav-item">
+        <NavLink  className="nav-link" to="/about">AboutMe</NavLink>
+      </li>
+    
+      <li className="nav-item">
+        <NavLink  className="nav-link" to="/logout">Logout</NavLink>
+      </li>
+
+
+</>
+
+)
+
+
+}
+else{
+return(
+<>
+<li className="nav-item active">
+        <NavLink className="nav-link" to="/">Home </NavLink>
+      </li>
+      
+      <li className="nav-item">
+        <NavLink  className="nav-link" to="/login">Login</NavLink>
+      </li>
+      <li className="nav-item">
+        <NavLink  className="nav-link" to="/signup">Register</NavLink>
+      </li>
+      
+
+
+</>
+
+
+)
+
+
+
+}
+
+
+}
+
+
+
 return (
     <>
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -15,11 +69,14 @@ return (
 
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav ms-auto">
-      <li className="nav-item active">
+     <RenderMenu/>
+      
+     
+      {/* <li className="nav-item active">
         <NavLink className="nav-link" to="/">Home </NavLink>
       </li>
       <li className="nav-item">
-        <NavLink  className="nav-link" to="/about">About</NavLink>
+        <NavLink  className="nav-link" to="/about">AboutMe</NavLink>
       </li>
       <li className="nav-item">
         <NavLink  className="nav-link" to="/login">Login</NavLink>
@@ -27,6 +84,9 @@ return (
       <li className="nav-item">
         <NavLink  className="nav-link" to="/signup">Register</NavLink>
       </li>
+      <li className="nav-item">
+        <NavLink  className="nav-link" to="/logout">Logout</NavLink>
+      </li> */}
     </ul>
     
   </div>

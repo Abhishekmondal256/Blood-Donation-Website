@@ -82,14 +82,14 @@ router.post("/signin", async (req, res) => {
       })
        
       if (!isMatch) {
-        res.json({ error: "Invalid credentials" });
+        res.status(400).json({ error: "Invalid credentials" });
       }
       else {
         res.json({ message: "user login successfully" });
       }
     }
     else {
-      res.json({ error: "Invalid credentials" });
+      res.status(400).json({ error: "Invalid credentials" });
 
     }
 
@@ -123,7 +123,7 @@ router.post("/searchpage",async(req,res)=>{
   try {
    
     const { state,city,bloodgrp } = req.body;
-    const users=await User.find({state:state,city:city,bloodgrp:bloodgrp});
+    const users=await User.find({state:state.toLowerCase(),city:city.toLowerCase(),bloodgrp:bloodgrp.toUpperCase()});
    
     res.json(users);
 
@@ -153,6 +153,13 @@ console.log(req.params);
     return res.status(422).json({ error: "plz fill all the deatils" });
   }
   try{
+    newData.name=newData.name.toLowerCase();
+    newData.gender=newData.gender.toLowerCase();
+    newData.state=newData.state.toLowerCase();
+    newData.city=newData.city.toLowerCase();
+    newData.bloodgrp=newData.bloodgrp.toUpperCase();
+    newData.password= await bcrypt.hash(newData.password,5);
+    newData.cpassword= await bcrypt.hash(newData.cpassword,5);
     User.findByIdAndUpdate(recordId, { $set: newData }, { new: true })
     .then((updatedRecord) => {
       if (updatedRecord) {
