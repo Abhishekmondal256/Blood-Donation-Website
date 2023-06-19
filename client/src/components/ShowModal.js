@@ -5,7 +5,11 @@ const MyModal=({closeModal,pup})=>{
        name:"", email:"", phone:"", bloodgrp:"", gender:"", age:"",profpic:"", ldate:"", state:"", city:"", password:"", cpassword:""
     
       });
-      console.log(pup);
+      const validateEmail = (email) => {
+    
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      };
       let name,value;
       const handleInputsUpdate=(e)=>{
         console.log(e);
@@ -21,6 +25,10 @@ const MyModal=({closeModal,pup})=>{
           
           }
 const handleUpdate=async(e)=>{
+  if (!validateEmail(userUpdate.email)) {
+    window.alert("Invalid email format");
+    return;
+  }
     const formData=new FormData();
     formData.append("_id",pup);
     formData.append("name",userUpdate.name);
@@ -64,7 +72,7 @@ return ReactDOM.createPortal (
 <div className="modal-wrapper" onClick={closeModal}></div>
 <div className="modal-container">
 <form method="PUT" className="register-form" id="register-form updateform">
-     <div className="form-group newformgroup "><div id="lab newlab">Name</div>
+     <div className="form-group newformgroup"><div id="lab newlab">Name</div>
       <div id="lab2"> <label htmlFor="name">
        <i class="zmdi zmdi-account "></i>
         </label>
@@ -79,6 +87,7 @@ return ReactDOM.createPortal (
        <input type="email" name="email" id="email" autoComplete="off" value={userUpdate.email} onChange={handleInputsUpdate}  placeholder="enter your email"/>
     
       </div>  </div>
+      
      <div className="form-group newformgroup"><div id="lab">Phone</div>
       <div id="lab2"> <label htmlFor="phone">
        <i class="zmdi zmdi-phone-in-talk "></i>
@@ -93,7 +102,7 @@ return ReactDOM.createPortal (
        <input type="text" name="bloodgrp" id="bloodgrp" autoComplete="off" value={userUpdate.bloodgrp} onChange={handleInputsUpdate}  placeholder="enter your bloodgroup"/>
        </div>
      </div>
-     <div className="form-group newformgroup"><div id="lab">Gender</div>
+     {/* <div className="form-group newformgroup"><div id="lab">Gender</div>
       <div id="lab2"> <label htmlFor="gender">
        <i class="zmdi zmdi-male-female"></i>
         </label>
@@ -101,7 +110,46 @@ return ReactDOM.createPortal (
     
      </div>  
     
-     </div>
+     </div> */}
+       <div className="form-group newformgroup">
+        <div id="lab">Gender</div>
+        <div id="lab2">
+        <i class="zmdi zmdi-male-female"></i>
+        <label htmlFor="gender">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  checked={userUpdate.gender === "male"}
+                  onChange={handleInputsUpdate}
+                />
+                Male
+              </label>&nbsp;
+              <label htmlFor="gender">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  checked={userUpdate.gender === "female"}
+                  onChange={handleInputsUpdate}
+                />
+                Female
+              </label>&nbsp;
+              <label htmlFor="gender">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="other"
+                  checked={userUpdate.gender === "other"}
+                  onChange={handleInputsUpdate}
+                />
+                Other
+              </label>
+        </div>
+
+
+       </div>
+
      <div className="form-group newformgroup"><div id="lab">Age</div>
       <div id="lab2"> <label htmlFor="age">
        <i class="zmdi zmdi-edit"></i>

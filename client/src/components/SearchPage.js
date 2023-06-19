@@ -129,21 +129,21 @@ console.log(data.profpic);
                         <div className="dinp">
                             <label htmlFor="state">Search Your State:</label>
                             <div className="input flex">
-                                <input type="text" name="state" id="state" value={search.state} onChange={handleSearch} placeholder="Enter state here" />
+                                <input type="text" name="state" id="state" value={search.state}  autoComplete="off" onChange={handleSearch} placeholder="Enter state here" />
                             </div>
 
                         </div>
                         <div className="dinp">
                             <label htmlFor="city">Search Your City:</label>
                             <div className="input flex">
-                                <input type="text" name="city" id="city" value={search.city} onChange={handleSearch} placeholder="Enter City here" />
+                                <input type="text" name="city" id="city" value={search.city}  autoComplete="off" onChange={handleSearch} placeholder="Enter City here" />
                             </div>
 
                         </div>
                         <div className="dinp">
                             <label htmlFor="bloodgrp">Select Your Blood Group:</label>
                             <div className="input flex">
-                                <input type="text" name="bloodgrp" id="bloodgrp" value={search.bloodgrp}  onChange={handleSearch} placeholder="Enter Blood group here" />
+                                <input type="text" name="bloodgrp" id="bloodgrp" value={search.bloodgrp}  autoComplete="off"  onChange={handleSearch} placeholder="Enter Blood group here" />
                             </div>
 
                         </div>

@@ -55,25 +55,27 @@ return (
 
  
  <div className="form-groupe">
-   <label htmlFor="email">
+ <div id="labl">Email</div>
+ <div id="lab2l">  <label htmlFor="email">
    <i class="zmdi zmdi-email "></i>
    </label>
    <input type="email" name="email" id="email" autoComplete="off" value={email} onChange={(e)=> setEmail(e.target.value)} placeholder="enter your email"/>
-
+</div>
  </div>
  
  
  <div className="form-groupe">
-   <label htmlFor="password">
+ <div id="labl">Password</div>
+ <div id="lab2l">  <label htmlFor="password">
    <i class="zmdi zmdi-gps-dot"></i>
    </label>
    <input type="password" name="password" id="password" autoComplete="off" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="enter your password"/>
-
+</div>
  </div>
  
 
- <div className="form-groupe">
- <NavLink to="/signup" className="signup-link">Create Account</NavLink>
+ <div className="form-groupeu">
+ <NavLink to="/signup" className="signup-link " >Create Account</NavLink>
     <input type="submit" name="signin" id="signin" className="form-submit" value="Log In" onClick={loginUser}/>
     
  </div>

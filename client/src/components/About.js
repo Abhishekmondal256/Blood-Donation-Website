@@ -2,12 +2,16 @@ import React, { useEffect ,useState}  from "react";
 // import abhipic from "../images/registration.jpeg";
 import { NavLink,useNavigate } from "react-router-dom";
 import MyModal  from "./ShowModal";
+import MyModal2 from "./ShowModal2";
 const About = ()=>{
    const navigate=useNavigate();
    const [userData,setUserData]=useState({});
    const [showModal,setShowModal]=useState(false);
-
+   const [showModal2,setShowModal2]=useState(false);
    const closeModal=()=>{setShowModal(false);
+   
+   }
+   const closeModal2=()=>{setShowModal2(false);
    
    }
 const callAboutPage=async()=>{
@@ -51,7 +55,7 @@ callAboutPage();
 <form method="GET">
 <div className="row" id="row">
 <div className="col">
-<img src={"http://localhost:5000/public/images/"+userData.profpic} alt="abhi" width="150px"/> 
+<img src={"http://localhost:5000/public/images/"+userData.profpic} alt="abhi" width="150px" height="170px"/> 
 
 
 </div>
@@ -66,6 +70,8 @@ callAboutPage();
 
 </div>
 <div className="col3">
+<button onClick={(e)=>{e.preventDefault();setShowModal2(true)}} id="delbtn" className="delbtn">Delete </button>
+{showModal2 && <MyModal2  closeModal={closeModal2} pup={userData._id}/>}
 <button onClick={(e)=>{e.preventDefault();setShowModal(true)}} id="peditbtn" className="peditbtn" >Edit Info</button>
 {showModal && <MyModal  closeModal={closeModal} pup={userData._id}/>}
 

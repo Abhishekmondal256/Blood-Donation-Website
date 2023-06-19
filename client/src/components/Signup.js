@@ -7,12 +7,19 @@ const navigate=useNavigate();
     name:"", email:"", phone:"", bloodgrp:"", gender:"", age:"",profpic:"", ldate:"", state:"", city:"", password:"", cpassword:""
 
   });
+  const validateEmail = (email) => {
+    
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
   let name,value;
   const handleInputs=(e)=>{
 console.log(e);
 name=e.target.name;
 value=e.target.value;
-setUser({...user,[name]:value});
+
+  setUser({ ...user, [name]: value });
+
   }
 const handleImage=(e)=>{
   console.log(e.target.files[0]);
@@ -35,7 +42,10 @@ setUser({...user,profpic:e.target.files[0]});
 //   })
 
 //   });
-
+if (!validateEmail(user.email)) {
+      window.alert("Invalid email format");
+      return;
+    }
    const formData=new FormData();
    formData.append("name",user.name.toLowerCase());
    formData.append("email",user.email);
@@ -105,7 +115,7 @@ return (
      
      <div className="form-group"><div id="lab">Email</div>
       <div id="lab2"> <label htmlFor="email">
-       <i class="zmdi zmdi-email "></i>
+       <i class="zmdi zmdi-email"></i>
         </label>
        <input type="email" name="email" id="email" autoComplete="off" value={user.email} onChange={handleInputs}  placeholder="enter your email"/>
     
@@ -124,7 +134,7 @@ return (
        <input type="text" name="bloodgrp" id="bloodgrp" autoComplete="off" value={user.bloodgrp} onChange={handleInputs}  placeholder="enter your bloodgroup"/>
        </div>
      </div>
-     <div className="form-group"><div id="lab">Gender</div>
+     {/* <div className="form-group"><div id="lab">Gender</div>
       <div id="lab2"> <label htmlFor="gender">
        <i class="zmdi zmdi-male-female"></i>
         </label>
@@ -132,6 +142,45 @@ return (
     
      </div>  
     
+     </div> */}
+     <div className="form-group">
+      <div id="lab">Gender</div>
+     <div id="lab2">
+     <i class="zmdi zmdi-male-female"></i>
+       <label htmlFor="gender">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  checked={user.gender === "male"}
+                  onChange={handleInputs}
+                />
+                Male
+              </label>
+               <label htmlFor="gender">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  checked={user.gender === "female"}
+                  onChange={handleInputs}
+                />
+                Female
+              </label>
+              <label htmlFor="gender">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="other"
+                  checked={user.gender === "other"}
+                  onChange={handleInputs}
+                />
+                Other
+              </label>
+
+     </div>
+
+
      </div>
      <div className="form-group"><div id="lab">Age</div>
       <div id="lab2"> <label htmlFor="age">
@@ -183,7 +232,7 @@ return (
        </div>
      </div>
     
-     <div className="form-groupy ">
+     <div className="form-groupy">
      <NavLink to="/login" className="signup-link">already registered</NavLink>
         <input type="submit" name="signup" id="signup" className="form-submit" value="Register" onClick={PostData} />
         

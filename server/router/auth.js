@@ -123,11 +123,15 @@ router.post("/searchpage",async(req,res)=>{
   try {
    
     const { state,city,bloodgrp } = req.body;
-    const users=await User.find({state:state.toLowerCase(),city:city.toLowerCase(),bloodgrp:bloodgrp.toUpperCase()});
+    
+    
+    const users=await User.find({state:state.toLowerCase()|| {$exists:true},city:city.toLowerCase() || {$exists:true},bloodgrp:bloodgrp.toUpperCase() || {$exists:true}});
+    
    
     res.json(users);
 
   }catch(err){
+    
    console.log(err);
    res.status(500).json({message:"internal server"});
   }
@@ -190,6 +194,25 @@ router.get("/logout",(req,res)=>{
   
   })
 
+router.delete("/delete",async (req, res) =>{
+  try{
+    console.log(req.body.id);
+  const documentId =req.body.id;
+  const result = await User.deleteOne({ _id: documentId });
+  console.log(result);
+  if (result.deletedCount > 0) {
+    res.send('Document deleted successfully.');
+    
 
+  } else {
+    res.status(404).send('Document not found.');
+  }
+  }catch(err){
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+
+  }
+
+})
 
 module.exports = router;
