@@ -55,7 +55,7 @@ callAboutPage();
 <form method="GET">
 <div className="row" id="row">
 <div className="col">
-<img src={"http://localhost:5000/public/images/"+userData.profpic} alt="abhi" width="150px" height="170px"/> 
+<img id="abtimage" src={"http://localhost:5000/public/images/"+userData.profpic} alt="abhi" width="150px" height="170px"/> 
 
 
 </div>
@@ -72,7 +72,7 @@ callAboutPage();
 <div className="col3">
 <button onClick={(e)=>{e.preventDefault();setShowModal2(true)}} id="delbtn" className="delbtn">Delete </button>
 {showModal2 && <MyModal2  closeModal={closeModal2} pup={userData._id}/>}
-<button onClick={(e)=>{e.preventDefault();setShowModal(true)}} id="peditbtn" className="peditbtn" >Edit Info</button>
+<button onClick={(e)=>{e.preventDefault();setShowModal(true)}} id="peditbtn" className="peditbtn" >Edit </button>
 {showModal && <MyModal  closeModal={closeModal} pup={userData._id}/>}
 
 </div>
@@ -83,7 +83,7 @@ callAboutPage();
 <div className="cole1" id="cole1">
 <div className="rowp" id="rowp">
 <div className="colp">
-<label >User ID :</label>
+<label >ID:</label>
 </div>
    <div className="colp">
     <p>{userData._id}</p>

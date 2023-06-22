@@ -123,7 +123,8 @@ console.log(data.profpic);
 
                         </h1>
 
-                    </div><form method="POST" id="search-form">
+                    </div>
+                    <form method="POST" id="search-form">
                     <div className="cardDiv grid">
                     
                         <div className="dinp">

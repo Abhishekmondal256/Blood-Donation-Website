@@ -187,9 +187,14 @@ catch(err){
 
 
 })
-router.get("/logout",(req,res)=>{
+router.get("/logout",authenticate,async (req,res)=>{
   console.log("hello my slogout");
+   req.rootUser.tokens=req.rootUser.tokens.filter((curElem)=>{
+    return curElem.token !== req.token
+   })
+    await req.rootUser.save();
   res.clearCookie("jwtoken",{path:"/"});
+  
   res.status(200).send("User Logout");
   
   })

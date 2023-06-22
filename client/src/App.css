@@ -478,24 +478,25 @@ gap:1rem;
 display:flex;
 flex-direction: row;
 justify-content: center;
+flex-wrap: wrap;
 }
 .dinp label{
 
 display:block;
-padding-bottom: 7px;
-font-size:18px ; 
+padding-bottom: 0.7rem;
+font-size:1.3rem ; 
 font-weight: 400; 
 }
 .input{
 
-  height:40px;
+  height:3rem;
  
 
 }
 .input input {
   border-radius: 10px;
 padding-left:4px;
-width:250px;
+width:15rem;
 }
 
 .searchOptions{
@@ -650,7 +651,15 @@ transition:all 0.1s;
     margin-top:-0.3rem;
     margin-bottom: 0.3rem;
   } 
-  /* @media only screen and (min-width:1000px) and (max-width:1200px){
+  .prt{
+    display:flex;
+    flex-direction: row;
+   gap:0.7rem;
+  }
+  
+  
+  
+  @media only screen and (min-width:1000px) and (max-width:1200px){
   .signup-image{
 
     width:40rem;
@@ -669,6 +678,22 @@ transition:all 0.1s;
 .imy{
   width:40rem;
   margin-left:-5.3rem;
+
+}
+.secContent{
+  gap:0.4rem;
+}
+.single .don{
+  font-size: 1.04rem;
+}
+.single .abt{
+  font-size: 1.1rem;
+}
+.imageDiv{
+  height:14rem;
+}
+.eprof{
+width:35rem;
 
 }
   }
@@ -693,8 +718,29 @@ transition:all 0.1s;
     margin-left:-4rem;
   
   }
-
-
+.input input{
+  width:10rem;
+}
+.smallText{
+  font-size:1.4rem;
+}
+.dinp label{
+  font-size: 1.2rem;
+}
+.secContent{
+  gap:0.5rem;
+   grid-template-columns: repeat(3,1fr);
+}
+.single .don{
+  font-size: 1.06rem;
+}
+.single .abt{
+  font-size: 1.1rem;
+}
+.eprof{
+  width:35rem;
+  
+  }
     }
      @media only screen and (min-width:578px) and (max-width:768px){
     .signup-image{
@@ -723,9 +769,41 @@ transition:all 0.1s;
  .form-groupy{
   margin-left:2rem;
  }
+ .ftitley{
+  margin-top:-5rem;
+  margin-bottom: 6rem;
+ }
+ .form-groupeu{
+  margin-top:1rem;
+margin-left:4rem;
+ }
+ .input input{
+  width:21rem;
+}
+.homeTitle
+{
+font-size:2.3rem;
+
+}  
+.secContent{
+  gap:1rem;
+   grid-template-columns: repeat(2,1fr);
+}
+.single .don{
+  font-size: 1.15rem;
+}
+.eprof{
+  width:35rem;
   
-  
-    }
+  }
+  .modal-container{
+    width:30rem;
+  }
+  .newformgroup{
+
+    grid-template-columns: 1fr 2fr;
+  }
+}
     @media only screen and  (max-width:577px){
       .signup-image{
     
@@ -768,5 +846,116 @@ width:6rem;
     #signup{
       width: 5rem;
     }
+    .signup-imagey{
+  
+      width:0rem;
+      
+    }
+    .imy{
+      width:19rem;
+      margin-left:-6rem; 
+    display: none;
+    }
+    .ftitley{
+      margin-top:-3rem;
+      margin-bottom: 4rem;
+     }
+     .form-groupeu{
+      margin-top:1rem;
+margin-left:-1.4rem;
+     }
+     #signin{
+      width:4rem;
+     }
+     #labl{
+      margin-left:-2rem;
+     }
+     #lab2l{
+      margin-left:-1rem;
+     }
+     .hcontent{
+width:18rem;
+
+     }
+     .hcontent h1{
+      font-size:2rem;
+     }
+     .homeTitle
+{
+font-size:1.8rem;
+
+} 
+   
+   .smallText{
+    font-size:1.1rem;
+  }  
+  .secContent{
+    width:23rem;
+    margin:auto;
+    gap:1rem;
+     grid-template-columns: repeat(1,1fr);
+  }
+  .eprof{
+    width:29rem;
     
-      } */
+    }
+.phead{
+  margin-left:-1rem;
+  margin-right:0.3rem;
+}
+.col3{
+  margin-left:-1rem;
+}
+.peditbtn{
+  padding:-2rem;
+}
+.modal-container{
+  width:25rem;
+}
+.newformgroup{
+
+  grid-template-columns: 0.7fr 0.6fr;
+  
+}
+.newformgroup input[type=radio]{
+  width:2rem;
+  
+  }
+
+.prt{
+  gap:0;
+  flex-direction:column ;
+}
+
+
+
+.newformgroupbtn button{
+  margin-left:0rem;
+}
+.nf .nf-1 h1{
+font-size: 8rem;
+  }
+  .nf h2{
+    font-size: 30px;
+  
+    font-weight: 500;
+    text-transform: uppercase;
+    
+      }
+    
+      .nf p{
+    
+    font-size: 10px;
+
+    font-weight: 200;
+  
+      }
+      .nf a{
+        
+        font-size:12px;
+     padding:10px 20px;
+     font-weight: 300;
+    
+       }
+
+  }

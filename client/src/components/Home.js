@@ -7,7 +7,7 @@ const Home=()=>{
 const Ho=()=>{
   if(!state){
 return(
-<p style={{marginTop:"1rem" ,fontSize:"1.5rem"}}>To Become a Donor Kindly Register</p>
+<p style={{marginTop:"1rem" ,fontSize:"1.3rem"}}>To Become a Donor Kindly Register</p>
 
 )
   }

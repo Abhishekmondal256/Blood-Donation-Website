@@ -115,6 +115,8 @@ return ReactDOM.createPortal (
         <div id="lab">Gender</div>
         <div id="lab2">
         <i class="zmdi zmdi-male-female"></i>
+        <div className="prt">
+        <div className="p1">
         <label htmlFor="gender">
                 <input
                   type="radio"
@@ -124,7 +126,9 @@ return ReactDOM.createPortal (
                   onChange={handleInputsUpdate}
                 />
                 Male
-              </label>&nbsp;
+              </label>
+              </div>
+              <div className="p1">
               <label htmlFor="gender">
                 <input
                   type="radio"
@@ -134,7 +138,9 @@ return ReactDOM.createPortal (
                   onChange={handleInputsUpdate}
                 />
                 Female
-              </label>&nbsp;
+              </label>
+              </div>
+              <div className="p1">
               <label htmlFor="gender">
                 <input
                   type="radio"
@@ -145,7 +151,8 @@ return ReactDOM.createPortal (
                 />
                 Other
               </label>
-        </div>
+              </div>
+        </div></div>
 
 
        </div>
@@ -168,7 +175,7 @@ return ReactDOM.createPortal (
       <div id="lab2"> <label htmlFor="ldate">
        <i class="zmdi zmdi-calendar"></i>
         </label>
-       <input type="date" name="ldate" id="ldate" autoComplete="off" value={userUpdate.ldate} onChange={handleInputsUpdate}  placeholder="last donated (dd/mm/yy)" />
+       <input type="date" name="ldate" id="ldate" className="ld" autoComplete="off" value={userUpdate.ldate} onChange={handleInputsUpdate}  placeholder="last donated (dd/mm/yy)" />
     
       </div>  </div>
      <div className="form-group newformgroup"><div id="lab">State</div>
