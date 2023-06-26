@@ -68,7 +68,7 @@ tokens:[
 })
 
 userSchema.pre("save",async function(next){
-    console.log("hi for indire")
+    
     if(this.isModified("password")){
     this.password=await bcrypt.hash(this.password,5);
     this.cpassword=await bcrypt.hash(this.cpassword,5);

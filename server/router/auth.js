@@ -37,7 +37,9 @@ let profpic=req.file.filename;
    
     return res.status(422).json({ error: "plz fill all the deatils" });
   }
-  
+  if(password!==cpassword){
+    return res.status(422).json({ error: "plz fill correct" });
+  }
   try {
     const userExist = await User.findOne({ email: email })
     if (userExist) {
@@ -105,7 +107,7 @@ router.post("/signin", async (req, res) => {
 
 });
 router.get("/about",authenticate,(req,res)=>{
-console.log("hello auth");
+
 res.send(req.rootUser);
 
 })
@@ -140,7 +142,7 @@ router.post("/searchpage",async(req,res)=>{
 })
 router.put("/update", upload.single('profpic'),async(req,res)=>{
   console.log(req.body);
-  console.log("backend successfull");
+ 
 console.log(req.params);
   const recordId = req.body._id;
   const newData = req.body;
@@ -156,14 +158,26 @@ console.log(req.params);
    
     return res.status(422).json({ error: "plz fill all the deatils" });
   }
+  if(newData.password!==newData.cpassword){
+    return res.status(422).json({ error: "plz fill correct" });
+  }
   try{
-    newData.name=newData.name.toLowerCase();
-    newData.gender=newData.gender.toLowerCase();
-    newData.state=newData.state.toLowerCase();
-    newData.city=newData.city.toLowerCase();
-    newData.bloodgrp=newData.bloodgrp.toUpperCase();
-    newData.password= await bcrypt.hash(newData.password,5);
-    newData.cpassword= await bcrypt.hash(newData.cpassword,5);
+    if(newData.name!==null){
+    newData.name=newData.name.toLowerCase();}
+    if(newData.gender!==null){
+    newData.gender=newData.gender.toLowerCase();}
+    if(newData.state!==null){
+    newData.state=newData.state.toLowerCase();}
+    if(newData.city!==null){
+    newData.city=newData.city.toLowerCase();}
+    if(newData.bloodgrp!==null){
+    newData.bloodgrp=newData.bloodgrp.toUpperCase();}
+    if(newData.password!==null){
+    newData.password= await bcrypt.hash(newData.password,5);}
+    if(newData.cpassword!==null){
+      newData.cpassword= await bcrypt.hash(newData.cpassword,5);}
+      
+    // newData.cpassword= await bcrypt.hash(newData.cpassword,5);
     User.findByIdAndUpdate(recordId, { $set: newData }, { new: true })
     .then((updatedRecord) => {
       if (updatedRecord) {
@@ -177,8 +191,7 @@ console.log(req.params);
     });
 
   }
-
-
+  
 catch(err){
   console.log(err);
   res.status(500).json({message:"internal server error occurred"});
@@ -187,6 +200,46 @@ catch(err){
 
 
 })
+router.put("/update2", upload.single('profpic'),async(req,res)=>{
+
+  const recordId = req.body._id;
+ 
+  const newData=req.body;
+  if (req.file) {
+    var path = require('path');
+    newData.profpic = path.basename(req.file.path); // Assuming the file path is stored as the image field
+  }
+  try{
+      
+   
+    
+    User.findByIdAndUpdate(recordId, { $set: newData }, { new: true })
+    .then((updatedRecord) => {
+      if (updatedRecord) {
+        res.json(updatedRecord);
+      } else {
+        res.status(404).json({ error: 'Record not found' });
+      }
+    })
+    .catch((error) => {
+      res.status(500).json({ error: 'Internal server error' });
+    });
+
+   
+ }
+  
+  
+
+
+  catch(err){
+    res.status(500).json({message:"internal server error occurred"});
+    
+  }
+
+})
+
+
+
 router.get("/logout",authenticate,async (req,res)=>{
   console.log("hello my slogout");
    req.rootUser.tokens=req.rootUser.tokens.filter((curElem)=>{
