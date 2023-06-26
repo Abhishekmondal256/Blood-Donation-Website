@@ -3,15 +3,21 @@ import React, { useEffect ,useState}  from "react";
 import { NavLink,useNavigate } from "react-router-dom";
 import MyModal  from "./ShowModal";
 import MyModal2 from "./ShowModal2";
+import MyModal3 from "./ShowModal3";
 const About = ()=>{
    const navigate=useNavigate();
    const [userData,setUserData]=useState({});
+   
    const [showModal,setShowModal]=useState(false);
    const [showModal2,setShowModal2]=useState(false);
+   const [showModal3,setShowModal3]=useState(false);
    const closeModal=()=>{setShowModal(false);
    
    }
    const closeModal2=()=>{setShowModal2(false);
+   
+   }
+   const closeModal3=()=>{setShowModal3(false);
    
    }
 const callAboutPage=async()=>{
@@ -57,7 +63,6 @@ callAboutPage();
 <div className="col">
 <img id="abtimage" src={"http://localhost:5000/public/images/"+userData.profpic} alt="abhi" width="150px" height="170px"/> 
 
-
 </div>
 <div className="col2">
 
@@ -72,9 +77,13 @@ callAboutPage();
 <div className="col3">
 <button onClick={(e)=>{e.preventDefault();setShowModal2(true)}} id="delbtn" className="delbtn">Delete </button>
 {showModal2 && <MyModal2  closeModal={closeModal2} pup={userData._id}/>}
-<button onClick={(e)=>{e.preventDefault();setShowModal(true)}} id="peditbtn" className="peditbtn" >Edit </button>
-{showModal && <MyModal  closeModal={closeModal} pup={userData._id}/>}
 
+
+
+<button onClick={(e)=>{e.preventDefault();setShowModal(true)}} id="peditbtn" className="peditbtn" >Edit Others</button>
+{showModal && <MyModal  closeModal={closeModal} pup={userData}/>}
+<button onClick={(e)=>{e.preventDefault();setShowModal3(true)}} id="peditim" className="peditbtnim" >Edit Image</button>
+{showModal3 && <MyModal3  closeModal={closeModal3} pup={userData._id}/>}
 </div>
 
 

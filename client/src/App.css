@@ -191,16 +191,16 @@ margin:0.1rem;
    backdrop-filter: blur(5px);
    -webkit-backdrop-filter: blur(5px);
    border: 1px solid rgba(255, 255, 255, 0.2);
-width:42vw;
+width:44vw;
 
   }
 
   #row{
     display:grid;
-    grid-template-columns: 2fr 2.5fr 1fr;
+    grid-template-columns: 2fr 2fr 1fr;
   
     
-    gap: 10px;padding:20px;
+    gap: 0px;padding:10px;
   }
   #row2{
   display:grid;
@@ -214,7 +214,11 @@ padding-left:25px;
   }
 .col3{
   display:flex;
-
+  margin-left:-1rem;
+  
+}
+.col2{
+  margin-left:0rem;
   
 }
 .delbtn{
@@ -222,7 +226,7 @@ padding-left:25px;
   
   color:white;
 background-color: blue;
-width:4rem;
+width:3.6rem;
 border:1px solid white;
 border-radius: 7px;
 }
@@ -230,14 +234,31 @@ border-radius: 7px;
 color:white;
 background-color: blue;
 text-decoration: none;
-padding:4px;
+padding:0px;
 border:1px solid white;
 border-radius: 7px;
 
-width:5rem;
-margin-left:0.4rem;
+width:6rem;
+margin-left:0.2rem;
 height:2.2rem;
   }
+  .peditbtnim{
+    color:white;
+    background-color: blue;
+    text-decoration: none;
+    padding:0px;
+    border:1px solid white;
+    border-radius: 7px;
+    
+    width:6rem;
+    margin-left:0.2rem;
+    height:2.2rem;
+      }
+      .peditbtnim:hover{
+        background-color: white;
+        border-color: blue;
+        color:blue;
+         }
   .peditbtn:hover{
  background-color: white;
  border-color: blue;
@@ -656,8 +677,15 @@ transition:all 0.1s;
     flex-direction: row;
    gap:0.7rem;
   }
-  
-  
+  /*showmodal3*/
+  .imct{
+    display:flex;
+    width:27rem;
+  }
+.imforbut{
+  margin-left:40%;
+  margin-top:1.2rem;
+}
   
   @media only screen and (min-width:1000px) and (max-width:1200px){
   .signup-image{
@@ -796,6 +824,11 @@ font-size:2.3rem;
   width:35rem;
   
   }
+  
+  .imfordiv{
+  
+    margin-left:2rem;
+  }
   .modal-container{
     width:30rem;
   }
@@ -896,7 +929,7 @@ font-size:1.8rem;
      grid-template-columns: repeat(1,1fr);
   }
   .eprof{
-    width:29rem;
+    width:27rem;
     
     }
 .phead{
@@ -904,7 +937,21 @@ font-size:1.8rem;
   margin-right:0.3rem;
 }
 .col3{
+  margin-left:-3rem;
+  display: flex;
+  flex-direction: column;
+}
+.delbtn{
+  width:6rem;
+}
+.col{
+  margin-left:0rem;
+}
+.cole1{
   margin-left:-1rem;
+}
+#abtimage{
+  width:120px !important;
 }
 .peditbtn{
   padding:-2rem;
@@ -957,5 +1004,27 @@ font-size: 8rem;
      font-weight: 300;
     
        }
-
-  }
+       .imfordiv{
+         
+        margin-left:2rem;
+      }
+      .newformgroupyi{
+        margin-left:1rem;
+      }
+      #lab2{
+        margin-left: 2rem;
+        
+      }
+      .imforbut{
+        margin-left:6rem;
+      }
+      #lab2{
+        width:13rem;
+      }
+      #lab2 input[type="file"]{
+        width:15rem;
+      }
+      #rowp{
+        font-size: 0.9rem;
+      }
+    }

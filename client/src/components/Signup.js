@@ -63,9 +63,13 @@ if (!validateEmail(user.email)) {
 method:"POST",
 body:formData
 
-   }).then((res)=>res.json()).then((data)=>{
-    window.alert("registration successfull");
-    console.log(data);
+   }).then((res)=>{res.json(); if(res.status===422){
+    window.alert("incomplete or wrong submission");
+    
+  }}).then((data)=>{
+         
+    
+    
     navigate("/login",{replace:true});}).
     catch((err)=>{
       window.alert("registration failed");

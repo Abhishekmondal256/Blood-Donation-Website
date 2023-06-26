@@ -1,8 +1,11 @@
 import React,{ useState,useEffect } from "react";
 import  ReactDOM  from "react-dom";
 const MyModal=({closeModal,pup})=>{
+  console.log(pup.profpic);
+  
     const [userUpdate,setUserUpdate]=useState({
-       name:"", email:"", phone:"", bloodgrp:"", gender:"", age:"",profpic:"", ldate:"", state:"", city:"", password:"", cpassword:""
+       name:pup.name, email:pup.email, phone:pup.phone, bloodgrp:pup.bloodgrp, gender:pup.gender, 
+       age:pup.age, ldate:pup.ldate, state:pup.state, city:pup.city, password:"", cpassword:""
     
       });
       const validateEmail = (email) => {
@@ -17,38 +20,58 @@ const MyModal=({closeModal,pup})=>{
         value=e.target.value;
         setUserUpdate({...userUpdate,[name]:value});
           }
-          const handleImageUpdate=(e)=>{
-            console.log(e.target.files[0]);
+          // const handleImageUpdate=(e)=>{
+          //   console.log(e.target.files[0]);
           
           
-          setUserUpdate({...userUpdate,profpic:e.target.files[0]});
+          // setUserUpdate({...userUpdate,profpic:e.target.files[0]});
           
-          }
+          // }
 const handleUpdate=async(e)=>{
+  console.log(userUpdate);
   if (!validateEmail(userUpdate.email)) {
     window.alert("Invalid email format");
     return;
   }
     const formData=new FormData();
-    formData.append("_id",pup);
-    formData.append("name",userUpdate.name);
-    formData.append("email",userUpdate.email);
-    formData.append("phone",userUpdate.phone);
-    formData.append("bloodgrp",userUpdate.bloodgrp);
-    formData.append("gender",userUpdate.gender);
-    formData.append("age",userUpdate.age);
-    formData.append("profpic",userUpdate.profpic,userUpdate.profpic.name);
-    formData.append("ldate",userUpdate.ldate);
-    formData.append("state",userUpdate.state);
-    formData.append("city",userUpdate.city);
-    formData.append("password",userUpdate.password);
-    formData.append("cpassword",userUpdate.cpassword);
+    
+    formData.append("_id",pup._id);
+    if(userUpdate.name!==null){
+    formData.append("name",userUpdate.name);}
+    if(userUpdate.email!==null){
+    formData.append("email",userUpdate.email);}
+    if(userUpdate.phone!==null){
+    formData.append("phone",userUpdate.phone);}
+    if(userUpdate.bloodgrp!==null){
+    formData.append("bloodgrp",userUpdate.bloodgrp);}
+    if(userUpdate.gender!==null){
+    formData.append("gender",userUpdate.gender);}
+    if(userUpdate.age!==null){
+    formData.append("age",userUpdate.age);}
+    // if(userUpdate.profpic!==null){
+    // formData.append("profpic",userUpdate.profpic,userUpdate.profpic.name);}
+    if(userUpdate.ldate!==null){
+    formData.append("ldate",userUpdate.ldate);}
+    if(userUpdate.state!==null){
+    formData.append("state",userUpdate.state);}
+    if(userUpdate.city!==null){
+    formData.append("city",userUpdate.city);}
+    if(userUpdate.password!==null){
+    formData.append("password",userUpdate.password);}
+    if(userUpdate.cpassword!==null){
+      formData.append("cpassword",userUpdate.cpassword);}
+    /*formData.append("cpassword",userUpdate.cpassword);*/
   const res=await fetch("/update",{
     method: 'PUT',
     body:formData
-  }).then((res)=>res.json()).then((data)=>{
+  }).then((res)=>{res.json();
+    if(res.status===422){window.alert("incomplete form submission");}}
+  ).then((data)=>{
+    
     console.log(data);}).catch((err)=>{
+      
         console.log(err);
+        
     });
 
 }
@@ -164,13 +187,14 @@ return ReactDOM.createPortal (
        <input type="number" name="age" id="age" min="1" autoComplete="off" value={userUpdate.age} onChange={handleInputsUpdate} placeholder="enter your age"/>
     
         </div></div>
-        <div className="form-group newformgroup"><div id="lab">Profile Pic</div>
+        {/* <div className="form-group newformgroup"><div id="lab">Profile Pic</div>
       <div id="lab2"> <label htmlFor="profpic">
        <i class="zmdi zmdi-image"></i>
         </label>
        <input type="file" name="profpic" id="profpic"  autoComplete="off" onChange={handleImageUpdate}  placeholder="profile pic"/>
-    
+     
         </div></div>
+        */}
      <div className="form-group newformgroup"><div id="lab">Last Donated</div>
       <div id="lab2"> <label htmlFor="ldate">
        <i class="zmdi zmdi-calendar"></i>
