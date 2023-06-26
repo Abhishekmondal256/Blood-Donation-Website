@@ -9,7 +9,7 @@ require("./db/conn");
 // const User=require("./model/userSchema");
 app.use(express.json());
 app.use(require("./router/auth"));
-const PORT=process.env.PORT;
+
 
 app.use('/public',express.static('public'));
 
@@ -26,6 +26,6 @@ app.use('/public',express.static('public'));
                 res.send("hello world signup");
                 
                 })
-app.listen(PORT,()=>{
-    console.log(`server running on port ${PORT}`);
+app.listen(5000,()=>{
+    console.log(`server running on port 5000`);
 })
